@@ -8,6 +8,23 @@ import zipfile
 from bs4 import BeautifulSoup
 from chps_config_directory import CHPSDirectoryManager
 
+manager = CHPSDirectoryManager()
+
+# Setting values
+manager.chps_root = "TIR-CHPS-Oper-Config"
+
+# Getting values
+print("CWD:", manager.cwd)
+print("CHPS Root Directory:", manager.chps_root)
+
+
+# Example usage:
+directory_name = manager.chps_root
+found_directory = manager.find_directory(directory_name)
+if found_directory:
+    print(f"Found {directory_name} at: {found_directory}")
+else:
+    print(f"{directory_name} not found.")
 
 
 
