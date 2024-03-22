@@ -17,7 +17,6 @@ manager.chps_root = "TIR-CHPS-Oper-Config"
 print("CWD:", manager.cwd)
 print("CHPS Root Directory:", manager.chps_root)
 
-
 # Example usage:
 directory_name = manager.chps_root
 found_directory = manager.find_directory(directory_name)
@@ -25,8 +24,6 @@ if found_directory:
     print(f"Found {directory_name} at: {found_directory}")
 else:
     print(f"{directory_name} not found.")
-
-
 
 def get_relative_path(additional_path):
     # Get the path of the current file

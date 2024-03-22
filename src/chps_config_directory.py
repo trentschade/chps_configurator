@@ -42,15 +42,18 @@ class CHPSDirectoryManager:
         # Start from the provided directory or the current working directory
         if start is None:
             start = os.getcwd()
+            print(f"start: {start}")
 
-        # Search upwards from the start directory
-        current_dir = start
-        while current_dir:
-            target_dir = os.path.join(current_dir, name)
-            if os.path.isdir(target_dir):
-                return target_dir
-            # Move up one directory
-            current_dir = os.path.dirname(current_dir)
+        # Search upwards one level from the start directory
+        parent_dir = os.path.dirname(start)
+        print(f"parent_dir: {parent_dir}")
+        for root, dirs, _ in os.walk(parent_dir):
+            if '.git' in dirs:
+                dirs.remove('.git')
+            for directory in dirs:
+                print(f"directory: {directory}")
+                if name in os.path.join(root, directory):
+                    return os.path.join(root,name)
 
         # Search downwards from the start directory
         for root, dirs, _ in os.walk(start):
